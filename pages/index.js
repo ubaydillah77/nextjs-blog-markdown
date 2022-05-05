@@ -13,7 +13,7 @@ export default function Home({ posts }) {
         <title>Ubay blog | Build with Nextjs & Markdown</title>
       </Head>
 
-      <h1>My Daily Post</h1>
+      <h1 className="home-title">My Daily Post</h1>
       <div className="posts">
         {posts.map((post, i) => (
           <Post post={post} key={i} />

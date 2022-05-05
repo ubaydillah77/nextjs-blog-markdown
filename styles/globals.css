@@ -27,8 +27,8 @@ a {
 }
 
 header {
-  background: steelblue;
-  color: #fff;
+  background: #054861;
+  color: #e1fef1;
   padding: 5px;
   margin-bottom: 40px;
 }
@@ -44,10 +44,14 @@ header a {
   padding: 0 10px;
 }
 
+.home-title {
+  color: #054861;
+}
+
 .btn {
   display: inline-block;
-  background: steelblue;
-  color: #fff;
+  background: #e1fef1;
+  color: #054861;
   border: none;
   padding: 8px 16px;
   border-radius: 5px;
@@ -111,6 +115,8 @@ ol {
   padding: 20px;
   margin: 20px 0;
   line-height: 2.3;
+  white-space: pre-wrap;
+  word-break: break-all;
 }
 
 @media (max-width: 500px) {
