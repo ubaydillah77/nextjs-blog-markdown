@@ -6,12 +6,14 @@ import Post from "../components/Post";
 import { sortByDate } from "../utils";
 
 export default function Home({ posts }) {
-  console.log(posts);
+  // console.log(posts);
   return (
     <div>
       <Head>
         <title>Ubay blog | Build with Nextjs & Markdown</title>
       </Head>
+
+      <h1>My Daily Post</h1>
       <div className="posts">
         {posts.map((post, i) => (
           <Post post={post} key={i} />
@@ -44,7 +46,7 @@ export async function getStaticProps() {
     };
   });
 
-  console.log(posts);
+  // console.log(posts);
 
   return {
     props: {
