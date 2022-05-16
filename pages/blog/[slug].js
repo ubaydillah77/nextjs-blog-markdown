@@ -1,9 +1,39 @@
 import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
+import { Button, Card, PostDate, PostImageCard } from "../../components/Styled";
+import styled from "styled-components";
 import { marked } from "marked";
 import Link from "next/link";
 import Image from "next/image";
+
+// STYLED COMPONENTS
+const PostTitle = styled.h1`
+  margin: 10px 0;
+  color: ${({ theme }) => theme.fontColor};
+`;
+
+const PostBody = styled.div`
+  color: ${({ theme }) => theme.bodyColor};
+
+  ul,
+  ol {
+    font-size: 110%;
+    line-height: 2.3;
+    font-weight: bold;
+    margin: 10px 0;
+    color: ${({ theme }) => theme.bodyColor};
+  }
+
+  pre {
+    background: #f4f4f4;
+    padding: 20px;
+    margin: 20px 0;
+    line-height: 2.3;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+`;
 
 export default function PostPage({
   frontmatter: { title, date, cover_image },
@@ -13,14 +43,13 @@ export default function PostPage({
   return (
     <>
       <Link href="/">
-        <a className="btn btn-back">Go Back</a>
+        <Button back>Go Back</Button>
       </Link>
-      <div className="card card-page">
-        <h1 className="post-title">{title}</h1>
-        <div className="post-date">Posted on {date}</div>
-        {/* <img src={cover_image} alt="post cover" /> */}
+      <Card cardPage>
+        <PostTitle>{title}</PostTitle>
+        <PostDate>Posted on {date}</PostDate>
 
-        <div className="card-image">
+        <PostImageCard>
           <Image
             src={cover_image}
             alt={title}
@@ -29,11 +58,11 @@ export default function PostPage({
             layout="responsive"
             objectFit="cover"
           />
-        </div>
-        <div className="post-body">
+        </PostImageCard>
+        <PostBody>
           <div dangerouslySetInnerHTML={{ __html: marked(content) }}></div>
-        </div>
-      </div>
+        </PostBody>
+      </Card>
     </>
   );
 }

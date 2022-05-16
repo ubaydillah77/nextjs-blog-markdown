@@ -1,13 +1,20 @@
 import Link from "next/link";
 import Image from "next/image";
+import { Button, PostDate, Card, PostImageCard } from "./Styled";
+import styled from "styled-components";
+
+const Title = styled.h3`
+  color: ${({ theme }) => theme.fontColor};
+`;
+
+const Subtitle = styled.p`
+  color: ${({ theme }) => theme.bodyColor};
+`;
 
 const Post = ({ post }) => {
   return (
-    <div className="card">
-      {/* <img src={post.frontmatter.cover_image} alt={post.frontmatter.title} />
-       */}
-
-      <div className="card-image">
+    <Card>
+      <PostImageCard>
         <Image
           src={post.frontmatter.cover_image}
           alt={post.frontmatter.title}
@@ -16,16 +23,17 @@ const Post = ({ post }) => {
           layout="responsive"
           objectFit="cover"
         />
-      </div>
+      </PostImageCard>
 
-      <div className="post-date">Posted on {post.frontmatter.date}</div>
+      <PostDate>Posted on {post.frontmatter.date}</PostDate>
 
-      <h3>{post.frontmatter.title}</h3>
-      <p>{post.frontmatter.excerpt}</p>
+      <Title>{post.frontmatter.title}</Title>
+      <Subtitle>{post.frontmatter.excerpt}</Subtitle>
+
       <Link href={`/blog/${post.slug}`}>
-        <a className="btn">Readmore</a>
+        <Button>Readmore</Button>
       </Link>
-    </div>
+    </Card>
   );
 };
 

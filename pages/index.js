@@ -2,23 +2,39 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 import Head from "next/head";
+import styled from "styled-components";
 import Post from "../components/Post";
 import { sortByDate } from "../utils";
 
+const Title = styled.h1`
+  color: #054861;
+`;
+
+const Posts = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 30px;
+
+  @media (max-width: 500px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
 export default function Home({ posts }) {
-  // console.log(posts);
   return (
     <div>
       <Head>
         <title>Ubay blog | Build with Nextjs & Markdown</title>
       </Head>
 
-      <h1 className="home-title">My Daily Post</h1>
-      <div className="posts">
+      <Title className="home-title">My Daily Post</Title>
+
+      <Posts>
         {posts.map((post, i) => (
           <Post post={post} key={i} />
         ))}
-      </div>
+      </Posts>
     </div>
   );
 }

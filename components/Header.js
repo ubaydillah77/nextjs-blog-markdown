@@ -1,13 +1,37 @@
 import Link from "next/link";
+import styled from "styled-components";
+// import { Container } from "./Styled";
 
-export const Header = () => {
+const HeaderStyled = styled.header`
+  background: #054861;
+  color: #e1fef1;
+  padding: 5px;
+  margin-bottom: 40px;
+`;
+
+const HeaderContainer = styled.div`
+  max-width: 900px;
+  margin: auto;
+  overflow: auto;
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-between;
+`;
+
+const Logo = styled.h2`
+  cursor: pointer;
+`;
+
+export const Header = ({ toggle }) => {
   return (
-    <header>
-      <div className="container">
+    <HeaderStyled>
+      <HeaderContainer>
         <Link href="/">
-          <h2>Ubay Blog</h2>
+          <Logo>Ubay Blog</Logo>
         </Link>
-      </div>
-    </header>
+
+        <button onClick={toggle}>Dark Mode</button>
+      </HeaderContainer>
+    </HeaderStyled>
   );
 };
