@@ -1,26 +1,30 @@
-import { useState } from "react";
-import styled, { ThemeProvider } from "styled-components";
+import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
+import styled, { ThemeProvider } from 'styled-components';
 // import { motion, AnimatePresence } from "framer-motion";
-import { Header } from "../components/Header";
-import { Container } from "../components/Styled";
-import { lightTheme, darkTheme, GlobalStyles } from "../themes/themes";
-import "../styles/globals.css";
+import { Header } from '../components/Header';
+import { Container } from '../components/Styled';
+import { lightTheme, darkTheme, GlobalStyles } from '../themes/themes';
+import '../styles/globals.css';
 
 function MyApp({ Component, pageProps, router }) {
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState('light');
 
   const toggleTheme = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    theme === 'light' ? setTheme('dark') : setTheme('light');
   };
 
   return (
-    <ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-      <GlobalStyles />
-      <Header toggle={toggleTheme} isTheme={theme} />
-      <Container>
-        <Component {...pageProps} />
-      </Container>
-    </ThemeProvider>
+    <>
+      <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+        <GlobalStyles />
+        <Header toggle={toggleTheme} isTheme={theme} />
+        <Container>
+          <Component {...pageProps} />
+        </Container>
+      </ThemeProvider>
+      <Analytics />
+    </>
     // <AnimatePresence>
     //   <motion.div
     //     key={router.route}
