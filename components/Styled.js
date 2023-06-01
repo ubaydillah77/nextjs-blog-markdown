@@ -9,7 +9,7 @@ export const Container = styled.main`
 
 export const Button = styled.a`
   display: inline-block;
-  background: ${(props) => (props.back ? "#f4f4f4" : "#e1fef1")};
+  background: #e1fef1;
   color: ${(props) => (props.back ? "#000" : "#054861")};
   border: none;
   margin-bottom: ${(props) => (props.back ? "20px" : "")};
@@ -19,6 +19,7 @@ export const Button = styled.a`
   text-decoration: none;
   font-size: 15px;
   font-family: inherit;
+  border: 2px solid #054861;
 `;
 
 export const Card = styled.div`

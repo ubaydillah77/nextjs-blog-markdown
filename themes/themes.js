@@ -19,6 +19,6 @@ export const darkTheme = {
 export const GlobalStyles = createGlobalStyle`
   body {
     background-color: ${(props) => props.theme.body};
-    transition: all .2s;
+    transition: all .2s ease-in-out;
   }
 `;
